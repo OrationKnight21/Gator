@@ -15,9 +15,9 @@ Before installing gator, make sure you have the following installed on your mach
 
 Install the `gator` CLI using `go install`:
 
-\`\`\`bash
+```bash
 go install github.com/OrationKnight21/gator@latest
-\`\`\`
+```
 
 This downloads, compiles, and installs the `gator` binary into your
 `$GOPATH/bin` (or `$GOBIN`) directory. Make sure that directory is in your
@@ -29,12 +29,12 @@ Gator reads its configuration from a JSON file located at `~/.gatorconfig.json`.
 
 Create the file with the following structure:
 
-\`\`\`json
+```json
 {
   "db_url": "postgres://username:password@localhost:5432/gator?sslmode=disable",
   "current_user_name": ""
 }
-\`\`\`
+```
 
 - `db_url`: the connection string for your Postgres database.
 - `current_user_name`: gets set automatically when you log in; you can leave it blank initially.
@@ -46,9 +46,9 @@ before using gator.
 
 Once installed and configured, you can run commands like this:
 
-\`\`\`bash
+```bash
 gator <command> [args...]
-\`\`\`
+```
 
 ### Available commands
 
@@ -68,13 +68,13 @@ gator <command> [args...]
 
 ### Example workflow
 
-\`\`\`bash
+```bash
 gator register alice
 gator addfeed "Boot.dev Blog" https://blog.boot.dev/index.xml 
 gator agg 1m
 gator browse 5
-\`\`\`
-\`\`\`
+```
+```
 
 ## to use "search", just enter the following after registering the user.
 gator search "golang" 10
