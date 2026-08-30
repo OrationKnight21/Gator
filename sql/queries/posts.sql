@@ -11,3 +11,17 @@ JOIN feeds ON posts.feed_id = feeds.id
 WHERE feed_follows.user_id = $1
 ORDER BY posts.published_at DESC
 LIMIT $2;
+-- name: SearchPostsForUser :many
+SELECT posts.*, feeds.name AS feed_name
+FROM posts
+JOIN feed_follows ON posts.feed_id = feed_follows.feed_id
+JOIN feeds ON posts.feed_id = feeds.id
+WHERE feed_follows.user_id = $1
+  AND (
+    posts.title % $2
+    OR posts.description % $2
+    OR posts.title ILIKE '%' || $2 || '%'
+    OR posts.description ILIKE '%' || $2 || '%'
+  )
+ORDER BY similarity(posts.title, $2) DESC
+LIMIT $3;

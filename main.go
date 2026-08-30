@@ -34,6 +34,7 @@ func main() {
 	nmap.register("following", middlewareLoggedIn(following))
 	nmap.register("unfollow", middlewareLoggedIn(handlerUnfollow))
 	nmap.register("browse", middlewareLoggedIn(browse))
+	nmap.register("search", middlewareLoggedIn(handlerSearch))
 	cArgs := os.Args
 	if len(cArgs) < 2 {
 		log.Fatal("insufficient arguments")
